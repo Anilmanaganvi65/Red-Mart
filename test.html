@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pop-up Message Example</title>
+  <style>
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f1f1f1;
+      color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 300px;
+    }
+
+    .popup-message {
+      flex-grow: 1;
+    }
+
+    .cancel-button {
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pop-up Message Example</h1>
+  <button id="myButton">Click Me!</button>
+
+  <script>
+    // Get a reference to the button element
+    const button = document.getElementById('myButton');
+    let counter = 0;
+
+    // Function to show the pop-up message
+    function showPopupMessage() {
+      // Clear previous pop-up message
+      const previousPopup = document.querySelector('.popup');
+      if (previousPopup) {
+        previousPopup.remove();
+      }
+
+      // Create the pop-up message element
+      const popup = document.createElement('div');
+      popup.classList.add('popup');
+
+      const message = document.createElement('span');
+      message.classList.add('popup-message');
+      message.textContent = `Hello, world! (${counter + 1})`; // Message to display
+
+      const cancelButton = document.createElement('button');
+      cancelButton.classList.add('cancel-button');
+      cancelButton.textContent = 'X';
+      cancelButton.addEventListener('click', () => {
+        popup.remove();
+      });
+
+      popup.appendChild(message);
+      popup.appendChild(cancelButton);
+
+      // Append the pop-up message to the body of the document
+      document.body.appendChild(popup);
+
+      counter++;
+    }
+
+    // Add a click event listener to the button
+    button.addEventListener('click', showPopupMessage);
+  </script>
+</body>
+</html>

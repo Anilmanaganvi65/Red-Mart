@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="password" id="pass">
+    <p style="display: none;" id="message">password entered</p>
+    <script>
+        var pass = document.getElementById('pass');
+        var message = document.getElementById('message')
+
+        pass.addEventListener('input',()=>
+        {
+            if(pass.value.length > 0){
+                message.style.display ="block";
+            }
+            else{
+                message.style.display ="none";
+
+            }
+        })
+    </script>
+</body>
+
+</html>
