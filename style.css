@@ -4,7 +4,9 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-
+body{
+    scroll-behavior: smooth;
+}
 .section {
     padding: 40px 80px;
 }
@@ -1043,28 +1045,23 @@ input[type="button"] {
 }
       #sidebar-cart {
         position: fixed;
-        top: 95000;
         overflow-y: scroll;
         right: 0;
+        top: 95000;
         width: 390px;
         height: 87vh;
         background: whitesmoke;
         transition: 0.5s;
         border-radius: 20px;
-
-
     }
+ #sidebar-cart.cart-closser{
+    top: 95000;
 
+}
     #sidebar-cart.active-cart {
      top: 95;
 
     }
-    #sidebar-cart.cart-close-cart{
-        top: 95000;
-    }
-
-    
-
 
 .cart-header h3{
     text-align: center;
@@ -1340,6 +1337,11 @@ background-color: gray;
     padding-left: 140px;
 }
 
+@media only screen and (max-width: 1440px) {
+        .services img{
+            width: 300px;
+        }
+}
 
 /* media query starts*/
 @media only screen and (max-width:800px) {

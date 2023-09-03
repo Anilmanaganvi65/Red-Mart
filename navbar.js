@@ -1,5 +1,4 @@
 
-
 const toggle = document.getElementById('toggle');
 const sidebar = document.getElementById('sidebar');
 
@@ -20,17 +19,21 @@ toggle.onclick = function () {
 
 // cart functionality
 
-// var cartclose = document.getElementById('cart-close');
-// var sb = document.getElementById('sidebar-cart');
+var cartclose = document.getElementById('cart-close');
+var sb = document.getElementById('sidebar-cart');
+var cartSidebar = document.getElementById('cart-items');
 
-// if(cartclose.onclick = true){
-//   sb.style.display="none";
-// }
-// else{
+cartSidebar.onclick = function(){
+  cartSidebar.classList.toggle('active-cart');
+  sb.classList.toggle('active-cart');
+}
+cartclose.onclick = function(){
+  cartSidebar.classList.toggle('cart-closser');
+  sb.classList.toggle('cart-closser');
+  cartSidebar.classList.remove('active-cart');
+  sb.classList.remove('active-cart');
 
-// }
-
-
+}
 
 // reg form validation
 
@@ -38,11 +41,14 @@ toggle.onclick = function () {
 var str= document.getElementById("str");
 var pass = document.getElementById("password");
 var message = document.getElementById("unknown");
-pass.addEventListener('input', ()=>{
-  if(pass.value.length > 0){
-    message.style.display = "block"
+pass.oninput = function(){
+  if(pass.length > 0){
+    message.style.display = "block";
   }
   else{
-    message.style.display ="none"
+    message.style.display ="none";
   }
-})
+}
+
+
+
