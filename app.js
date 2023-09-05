@@ -6,7 +6,7 @@ const productsElm = document.querySelector(".pro-container");
 const cartitemElm = document.querySelector(".cart-Container");
 const subtotalElm = document.querySelector(".total");
 const numofitemsElm = document.querySelector(".cart-Container");
-const totalnumElm =document.querySelector(".CART-TOTAL");
+const totalnumElm = document.querySelector(".CART-TOTAL");
 
 
 // rendering products
@@ -40,13 +40,12 @@ renderProducts();
 
 // create empty cart
 
-let cart=[];
-// let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem("CART")) || [];
 
 // add to cart items
 
 function addToCart(id) {
-    // checking the existed item in cart
+    // cheking the existed item in cart
     if (cart.some(item => item.id === id)) {
         changeNumofUnits("plus", id);
     }
@@ -67,11 +66,8 @@ function updateCart() {
     rendercartitems();
     rendersubtotal();
 
-// local storage
-// localStorage.setItem('cart', JSON.stringify(cartItems));
-
-
-
+    // local storage
+    localStorage.setItem("CART", JSON.stringify(cart));
 }
 
 // calculate and render the itmes in subtotal
@@ -94,8 +90,8 @@ function rendersubtotal() {
     <div class="total-amount">₹ ${totalprice} /-</div>
     </div>
                 `
-                totalnumElm.innerHTML=totalitems;
-                
+    totalnumElm.innerHTML = totalitems;
+
 
 }
 
@@ -135,10 +131,10 @@ function rendercartitems() {
 
 // remove item
 
-function removeitem(id){
-cart=cart.filter((item)=>item.id !== id);
+function removeitem(id) {
+    cart = cart.filter((item) => item.id !== id);
 
-updateCart();
+    updateCart();
 }
 
 
