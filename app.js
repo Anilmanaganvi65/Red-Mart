@@ -40,7 +40,7 @@ renderProducts();
 
 // create empty cart
 
-let cart = JSON.parse(localStorage.getItem("CART")) || [];
+let cart = /**JSON.parse(localStorage.getItem("CART")) || */[];
 
 // add to cart items
 
@@ -67,21 +67,29 @@ function updateCart() {
     rendersubtotal();
 
     // local storage
-    localStorage.setItem("CART", JSON.stringify(cart));
+    // localStorage.setItem("CART", JSON.stringify(cart));
 }
 
 // calculate and render the itmes in subtotal
 
 function rendersubtotal() {
+    // cart.forEach((item) => {
+        // totalprice = item.price * item.numofUnits;
+        // totalitems = item.numofUnits;
+
+    
     let totalprice = 0,
         totalitems = 0;
 
-    cart.forEach((item) => {
-        totalprice = item.price * item.numofUnits;
-        totalitems = item.numofUnits;
-    });
-
-    subtotalElm.innerHTML = `
+    if (cart.lenght != 0) {
+        totalitems = cart.numofUnits;
+        totalprice = cart.map((x) => {
+            let { item, id } = x;
+            let search = products.find((y) => y.id === id);
+            return item * search.price
+        })
+        .reduce((x, y) => x + y, 0)
+        subtotalElm.innerHTML = `
     <div class="total">
     <div class="anil">
         <div class="Subtotal">Sub-Total</div>
@@ -90,7 +98,12 @@ function rendersubtotal() {
     <div class="total-amount">₹ ${totalprice} /-</div>
     </div>
                 `
-    totalnumElm.innerHTML = totalitems;
+        console.log(totalprice);
+    } else return
+    ;
+
+// });
+
 
 
 }

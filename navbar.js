@@ -32,7 +32,6 @@ cartclose.onclick = function(){
   sb.classList.toggle('cart-closser');
   cartSidebar.classList.remove('active-cart');
   sb.classList.remove('active-cart');
-
 }
 
 // reg form validation
